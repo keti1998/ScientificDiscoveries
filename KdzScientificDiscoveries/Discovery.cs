@@ -15,6 +15,13 @@ namespace KdzScientificDiscoveries
             get { return _name; }
             set { _name = value; }
         }
+        private string _scientist;
+
+        public string Scientist
+        {
+            get { return _scientist; }
+            set { _scientist = value; }
+        }
 
         private string _sphere;
 
@@ -24,13 +31,7 @@ namespace KdzScientificDiscoveries
             set { _sphere = value; }
         }
 
-        private double _budget;
-
-        public double Budget
-        {
-            get { return _budget; }
-            set { _budget = value; }
-        }
+    
 
         private string _country;
 
@@ -48,19 +49,19 @@ namespace KdzScientificDiscoveries
             set { _date = value; }
         }
 
-        private bool _NobelPrize;
+        private string _NobelPrize;
 
-        public bool NobelPrize
+        public string NobelPrize
         {
             get { return _NobelPrize; }
             set { _NobelPrize = value; }
         }
 
 
-        public Discovery(string name, string sphere, double budget, string country, int date, bool nobelPrize)
+        public Discovery(string name,string scientist, string country, string sphere,  int date, string nobelPrize)
         {
             _name = name;
-            _budget = budget;
+            _scientist = scientist;
             _sphere = sphere;
             _country = country;
             _date = date;
