@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace KdzScientificDiscoveries
 {
@@ -24,7 +25,7 @@ namespace KdzScientificDiscoveries
         {
             InitializeComponent();
         }
-        List<Discovery> _discoveries = new List<Discovery>();
+        List<Discovery> _discoveriesnew = new List<Discovery>();
 
 
         int date;
@@ -43,22 +44,13 @@ namespace KdzScientificDiscoveries
                 _nobelYes = "no";
             }
 
-            var discovery = new Discovery(textBoxname.Text, textBoxfio.Text, textBoxcountry.Text, textBoxsphere.Text, date, _nobelYes);
 
-            _discoveries.Add(discovery);
-            textBoxcountry.Clear();
-            textBoxfio.Clear();
-            textBoxname.Clear();
-            textBoxsphere.Clear();
-            textBoxyear.Clear();
-            nobelNo.IsChecked = false;
-            nobelYes.IsChecked = false;
-            dataGrid.ItemsSource = _discoveries;
-            if (string.IsNullOrWhiteSpace(textBoxcountry.Text))
+            if (string.IsNullOrWhiteSpace(textBoxname.Text))
             {
-                MessageBox.Show("Необходимо ввести страну");
-                textBoxcountry.Focus();
+                MessageBox.Show("Необходимо ввести название");
+                textBoxname.Focus();
                 return;
+
             }
 
             if (string.IsNullOrWhiteSpace(textBoxfio.Text))
@@ -68,13 +60,20 @@ namespace KdzScientificDiscoveries
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(textBoxname.Text))
+            if (nobelNo.IsChecked == false & nobelYes.IsChecked == false)
             {
-                MessageBox.Show("Необходимо ввести название");
-                textBoxname.Focus();
-                return;
-
+                MessageBox.Show("Необходимо выбрать ");
             }
+
+
+            if (string.IsNullOrWhiteSpace(textBoxcountry.Text))
+            {
+                MessageBox.Show("Необходимо ввести страну");
+                textBoxcountry.Focus();
+                return;
+            }
+
+
 
             if (string.IsNullOrWhiteSpace(textBoxsphere.Text))
             {
@@ -90,6 +89,45 @@ namespace KdzScientificDiscoveries
                 textBoxyear.Focus();
                 return;
             }
+            var discovery = new Discovery(textBoxname.Text, textBoxfio.Text, textBoxcountry.Text, textBoxsphere.Text, date, _nobelYes);
+            object[] discoveryarr = new object[6];
+            discoveryarr[0] = textBoxname.Text;
+            discoveryarr[1] = textBoxfio.Text;
+            discoveryarr[2] = textBoxcountry.Text;
+            discoveryarr[3] = textBoxsphere.Text;
+            discoveryarr[4] = textBoxyear.Text;
+            discoveryarr[5] = _nobelYes;
+
+            _discoveriesnew.Add(discovery);
+
+
+
+            textBoxcountry.Clear();
+            textBoxfio.Clear();
+            textBoxname.Clear();
+            textBoxsphere.Clear();
+            textBoxyear.Clear();
+            nobelNo.IsChecked = false;
+            nobelYes.IsChecked = false;
+
+            var lines = String.Join(",", discoveryarr);
+            string path = "D:/KDZ/KdzScientificDiscoveries/KdzScientificDiscoveries/list.txt";
+
+            if (!File.Exists(path))
+            {
+                File.Create(path);
+                TextWriter tw = new StreamWriter(path);
+                tw.Write(_discoveriesnew);
+                tw.Close();
+            }
+            else if (File.Exists(path))
+            {
+                File.AppendAllText(path, lines + Environment.NewLine);
+            }
+
+            dataGridnew.ItemsSource = null;
+            dataGridnew.Columns.Clear();
+            dataGridnew.ItemsSource = _discoveriesnew;
         }
 
        

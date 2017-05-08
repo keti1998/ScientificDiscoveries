@@ -25,7 +25,7 @@
         <Button x:Name="buttonAdd" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Margin="98,245,0,0" Height="32" Click="buttonAdd_Click"/>
         <RadioButton x:Name="nobelYes" Content="Да" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="235,143,0,0"/>
         <RadioButton x:Name="nobelNo" Content="Нет" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="235,168,0,0"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="133,380,0,0" VerticalAlignment="Top" Height="178" Width="453"/>
+        <DataGrid x:Name="dataGridnew" HorizontalAlignment="Left" Margin="133,380,0,0" VerticalAlignment="Top" Height="178" Width="453"/>
 
     </Grid>
 </Window>
