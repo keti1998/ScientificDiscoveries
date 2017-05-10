@@ -37,11 +37,11 @@ namespace KdzScientificDiscoveries
 
             if (nobelYes.IsChecked == true)
             {
-                _nobelYes = "yes";
+                _nobelYes = "ДА";
             }
             else
             {
-                _nobelYes = "no";
+                _nobelYes = "НЕТ";
             }
 
 
@@ -111,7 +111,7 @@ namespace KdzScientificDiscoveries
             nobelYes.IsChecked = false;
 
             var lines = String.Join(",", discoveryarr);
-            string path = "D:/KDZ/KdzScientificDiscoveries/KdzScientificDiscoveries/list.txt";
+            string path = "C:/Users/Kety/Documents/KDZ/KdzScientificDiscoveries/KdzScientificDiscoveries/list.txt";
 
             if (!File.Exists(path))
             {

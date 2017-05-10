@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KdzScientificDiscoveries"
         mc:Ignorable="d"
-        Title="DiscoveriesWindow" Height="365" Width="577.5">
+        Title="DiscoveriesWindow" Height="421" Width="815.5">
     <Grid>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="291" Width="572"/>
-        <Button x:Name="button_Add" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Margin="263,298,0,0" Height="26" Click="button_Add_Click"/>
-        <Button x:Name="button_Show" Content="Show" HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Margin="35,298,0,0" Height="26" Click="button_Show_Click"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="321" Width="808"/>
+        <Button x:Name="button_Add" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Margin="152,356,0,0" Height="26" Click="button_Add_Click"/>
+        <Button x:Name="button_Show" Content="Show" HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Margin="37,356,0,0" Height="26" Click="button_Show_Click"/>
+        <Button x:Name="button_Delete" Content="Delete" HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Margin="277,356,0,0" Height="26" Click="button_Delete_Click"/>
 
     </Grid>
 </Window>

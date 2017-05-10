@@ -24,6 +24,7 @@ namespace KdzScientificDiscoveries
         public DiscoveriesWindow()
         {
             InitializeComponent();
+           
         }
 
         private void button_Add_Click(object sender, RoutedEventArgs e)
@@ -32,11 +33,13 @@ namespace KdzScientificDiscoveries
             newD.Show();
             dataGrid.ItemsSource = null;
             dataGrid.Columns.Clear();
+            
         }
 
         private void button_Show_Click(object sender, RoutedEventArgs e)
         {
-            string[] line = File.ReadAllLines("D:/KDZ/KdzScientificDiscoveries/KdzScientificDiscoveries/list.txt", Encoding.GetEncoding(1251));
+            _discoveriesShow.Clear();
+            string[] line = File.ReadAllLines("C:/Users/Kety/Documents/KDZ/KdzScientificDiscoveries/KdzScientificDiscoveries/list.txt", Encoding.GetEncoding(1251));
             for (int i = 0; i < line.Length; i++)
             {
                 string[] items = line[i].Split(',');
@@ -44,6 +47,22 @@ namespace KdzScientificDiscoveries
                 _discoveriesShow.Add(example);
             }
             dataGrid.ItemsSource = _discoveriesShow;
+        }
+
+        private void button_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            var selindex = dataGrid.SelectedIndex;
+            string[] lines = File.ReadAllLines("C:/Users/Kety/Documents/KDZ/KdzScientificDiscoveries/KdzScientificDiscoveries/list.txt", Encoding.GetEncoding(1251));
+            StreamWriter sw = new StreamWriter("C:/Users/Kety/Documents/KDZ/KdzScientificDiscoveries/KdzScientificDiscoveries/list.txt", false, Encoding.UTF8);
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                if (i != selindex)
+                {
+                    sw.WriteLine(lines[i]);
+                }
+            }
+            sw.Close();
         }
     }
 }
