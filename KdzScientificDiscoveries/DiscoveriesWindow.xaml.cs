@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace KdzScientificDiscoveries
 {
@@ -47,22 +48,60 @@ namespace KdzScientificDiscoveries
                 _discoveriesShow.Add(example);
             }
             dataGrid.ItemsSource = _discoveriesShow;
+
+            BinaryFormatter formatter = new BinaryFormatter();
+            List<Discovery> list;
+            using (FileStream fs = new FileStream("C:/Users/Kety/Documents/KDZ/KdzScientificDiscoveries/KdzScientificDiscoveries/base.dat", FileMode.OpenOrCreate))
+            {
+                try
+                {
+                    list = (List<Discovery>)formatter.Deserialize(fs);
+                }
+                catch
+                {
+                    list = new List<Discovery>();
+                }
+            }
         }
 
         private void button_Delete_Click(object sender, RoutedEventArgs e)
         {
-            var selindex = dataGrid.SelectedIndex;
-            string[] lines = File.ReadAllLines("C:/Users/Kety/Documents/KDZ/KdzScientificDiscoveries/KdzScientificDiscoveries/list.txt", Encoding.GetEncoding(1251));
-            StreamWriter sw = new StreamWriter("C:/Users/Kety/Documents/KDZ/KdzScientificDiscoveries/KdzScientificDiscoveries/list.txt", false, Encoding.UTF8);
+           
 
-            for (int i = 0; i < lines.Length; i++)
+            var selindex = dataGrid.SelectedIndex + 1;
+            if (selindex == 0)
+
             {
-                if (i != selindex)
-                {
-                    sw.WriteLine(lines[i]);
-                }
+                MessageBox.Show("Вы ничего не выбрали");
             }
-            sw.Close();
+            else
+            {
+                MessageBoxResult result;
+                result = MessageBox.Show("Вы точно хотите безвозвратно удалить " + _discoveriesShow[selindex - 1].Name + "?", "Удаление элемента", MessageBoxButton.OKCancel);
+
+                if (result == MessageBoxResult.OK)
+                {
+                    _discoveriesShow.RemoveAt(selindex - 1);
+
+                    dataGrid.ItemsSource = null;
+                    dataGrid.Columns.Clear();
+                    dataGrid.ItemsSource = _discoveriesShow;
+
+                    string[] lines = File.ReadAllLines("C:/Users/Kety/Documents/KDZ/KdzScientificDiscoveries/KdzScientificDiscoveries/list.txt", Encoding.GetEncoding(1251));
+                    StreamWriter sw = new StreamWriter("C:/Users/Kety/Documents/KDZ/KdzScientificDiscoveries/KdzScientificDiscoveries/list.txt", false, Encoding.UTF8);
+
+                    for (int i = 0; i < lines.Length; i++)
+                    {
+                        if (i != selindex - 1)
+                        {
+                            sw.WriteLine(lines[i]);
+                        }
+                    }
+                    sw.Close();
+                }
+
+
+            }
         }
     }
 }

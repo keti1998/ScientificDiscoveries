@@ -39,7 +39,7 @@ namespace KdzScientificDiscoveries
             {
                 _nobelYes = "ДА";
             }
-            else
+            else if(nobelNo.IsChecked==true)
             {
                 _nobelYes = "НЕТ";
             }
@@ -60,10 +60,7 @@ namespace KdzScientificDiscoveries
                 return;
             }
 
-            if (nobelNo.IsChecked == false & nobelYes.IsChecked == false)
-            {
-                MessageBox.Show("Необходимо выбрать ");
-            }
+           
 
 
             if (string.IsNullOrWhiteSpace(textBoxcountry.Text))
@@ -87,6 +84,11 @@ namespace KdzScientificDiscoveries
             {
                 MessageBox.Show("Необхоимо ввести год");
                 textBoxyear.Focus();
+                return;
+            }
+            if (nobelNo.IsChecked == false & nobelYes.IsChecked == false)
+            {
+                MessageBox.Show("Необходимо выбрать ,получит ли ученый Нобелевскую премию или нет ");
                 return;
             }
             var discovery = new Discovery(textBoxname.Text, textBoxfio.Text, textBoxcountry.Text, textBoxsphere.Text, date, _nobelYes);
@@ -128,6 +130,7 @@ namespace KdzScientificDiscoveries
             dataGridnew.ItemsSource = null;
             dataGridnew.Columns.Clear();
             dataGridnew.ItemsSource = _discoveriesnew;
+           
         }
 
        

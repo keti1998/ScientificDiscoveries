@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace KdzScientificDiscoveries
 {
+    [Serializable]
     class Discovery
     {
         private string _name;
