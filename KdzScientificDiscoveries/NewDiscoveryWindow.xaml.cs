@@ -113,7 +113,7 @@ namespace KdzScientificDiscoveries
             nobelYes.IsChecked = false;
 
             var lines = String.Join(",", discoveryarr);
-            string path = "C:/Users/Kety/Documents/KDZ/KdzScientificDiscoveries/KdzScientificDiscoveries/list.txt";
+            string path = "../../list.txt";
 
             if (!File.Exists(path))
             {
@@ -130,6 +130,7 @@ namespace KdzScientificDiscoveries
             dataGridnew.ItemsSource = null;
             dataGridnew.Columns.Clear();
             dataGridnew.ItemsSource = _discoveriesnew;
+            
            
         }
 

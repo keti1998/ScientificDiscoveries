@@ -25,22 +25,8 @@ namespace KdzScientificDiscoveries
         public DiscoveriesWindow()
         {
             InitializeComponent();
-           
-        }
-
-        private void button_Add_Click(object sender, RoutedEventArgs e)
-        {
-            NewDiscoveryWindow newD = new NewDiscoveryWindow();
-            newD.Show();
-            dataGrid.ItemsSource = null;
-            dataGrid.Columns.Clear();
-            
-        }
-
-        private void button_Show_Click(object sender, RoutedEventArgs e)
-        {
             _discoveriesShow.Clear();
-            string[] line = File.ReadAllLines("C:/Users/Kety/Documents/KDZ/KdzScientificDiscoveries/KdzScientificDiscoveries/list.txt", Encoding.GetEncoding(1251));
+            string[] line = File.ReadAllLines("../../list.txt", Encoding.GetEncoding(1251));
             for (int i = 0; i < line.Length; i++)
             {
                 string[] items = line[i].Split(',');
@@ -49,21 +35,18 @@ namespace KdzScientificDiscoveries
             }
             dataGrid.ItemsSource = _discoveriesShow;
 
-            BinaryFormatter formatter = new BinaryFormatter();
-            List<Discovery> list;
-            using (FileStream fs = new FileStream("C:/Users/Kety/Documents/KDZ/KdzScientificDiscoveries/KdzScientificDiscoveries/base.dat", FileMode.OpenOrCreate))
-            {
-                try
-                {
-                    list = (List<Discovery>)formatter.Deserialize(fs);
-                }
-                catch
-                {
-                    list = new List<Discovery>();
-                }
-            }
         }
 
+        private void button_Add_Click(object sender, RoutedEventArgs e)
+        {
+            NewDiscoveryWindow newD = new NewDiscoveryWindow();
+            newD.Show();
+            
+            
+            
+        }
+
+       
         private void button_Delete_Click(object sender, RoutedEventArgs e)
         {
            
@@ -87,8 +70,8 @@ namespace KdzScientificDiscoveries
                     dataGrid.Columns.Clear();
                     dataGrid.ItemsSource = _discoveriesShow;
 
-                    string[] lines = File.ReadAllLines("C:/Users/Kety/Documents/KDZ/KdzScientificDiscoveries/KdzScientificDiscoveries/list.txt", Encoding.GetEncoding(1251));
-                    StreamWriter sw = new StreamWriter("C:/Users/Kety/Documents/KDZ/KdzScientificDiscoveries/KdzScientificDiscoveries/list.txt", false, Encoding.UTF8);
+                    string[] lines = File.ReadAllLines("../../list.txt", Encoding.GetEncoding(1251));
+                    StreamWriter sw = new StreamWriter("../../list.txt", false, Encoding.UTF8);
 
                     for (int i = 0; i < lines.Length; i++)
                     {
@@ -102,6 +85,22 @@ namespace KdzScientificDiscoveries
 
 
             }
+        }
+
+        private void button_Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            dataGrid.ItemsSource = null;
+            dataGrid.Columns.Clear();
+            _discoveriesShow.Clear();
+            string[] line = File.ReadAllLines("../../list.txt", Encoding.GetEncoding(1251));
+            for (int i = 0; i < line.Length; i++)
+            {
+                string[] items = line[i].Split(',');
+                Discovery example = new Discovery(items[0], items[1], items[2], items[3], int.Parse(items[4]), items[5]);
+                _discoveriesShow.Add(example);
+            }
+            dataGrid.ItemsSource = _discoveriesShow;
+
         }
     }
 }

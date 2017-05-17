@@ -5,27 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KdzScientificDiscoveries"
         mc:Ignorable="d"
-        Title="Новое открытие" Height="907" Width="723">
-    <Grid Margin="0,0,2,-4">
+        Title="Новое открытие" Height="514" Width="454">
+    <Grid Margin="0,0,-8,-4">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
         <TextBlock x:Name="name" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Название открытия:" VerticalAlignment="Top" Margin="0,22,0,0" Height="23" Width="133"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="ФИО ученого :" VerticalAlignment="Top" Margin="0,50,0,0" Height="16" Width="80"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Страна, в котороый было сделано открытие:" VerticalAlignment="Top" Margin="0,80,0,0" Height="16" Width="246"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="ФИО ученого :" VerticalAlignment="Top" Margin="0,50,0,0" Height="16" Width="100"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Страна, в которой было сделано открытие:" VerticalAlignment="Top" Margin="0,80,0,0" Height="16" Width="272"/>
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Сфера:" VerticalAlignment="Top" Margin="0,109,0,0" Height="16" Width="38"/>
         <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Год:" VerticalAlignment="Top" Margin="0,139,0,0" Height="16" Width="22"/>
         <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Наличие Нобелевской премии:" VerticalAlignment="Top" Margin="0,168,0,0" Height="16" Width="173"/>
-        <TextBox x:Name="textBoxname" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="221" Margin="159,21,0,0"/>
-        <TextBox x:Name="textBoxfio" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="221" Margin="159,50,0,0"/>
-        <TextBox x:Name="textBoxcountry" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="260,82,0,0"/>
-        <TextBox x:Name="textBoxsphere" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="305" Margin="75,109,0,0"/>
+        <TextBox x:Name="textBoxname" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="276" Margin="159,21,0,0"/>
+        <TextBox x:Name="textBoxfio" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="276" Margin="159,50,0,0"/>
+        <TextBox x:Name="textBoxcountry" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="122" Margin="313,82,0,0"/>
+        <TextBox x:Name="textBoxsphere" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="360" Margin="75,109,0,0"/>
         <TextBox x:Name="textBoxyear" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="75,137,0,0" PreviewTextInput="textBoxyear_PreviewTextInput"/>
-        <Button x:Name="buttonAdd" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Margin="98,245,0,0" Height="32" Click="buttonAdd_Click"/>
-        <RadioButton x:Name="nobelYes" Content="Да" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="235,143,0,0"/>
-        <RadioButton x:Name="nobelNo" Content="Нет" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="235,168,0,0"/>
-        <DataGrid x:Name="dataGridnew" HorizontalAlignment="Left" Margin="133,380,0,0" VerticalAlignment="Top" Height="178" Width="453"/>
+        <Button x:Name="buttonAdd" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Margin="338,163,0,0" Height="32" Click="buttonAdd_Click"/>
+        <RadioButton x:Name="nobelYes" Content="Да" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,169,0,0"/>
+        <RadioButton x:Name="nobelNo" Content="Нет" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="257,169,0,0"/>
+        <DataGrid x:Name="dataGridnew" HorizontalAlignment="Left" Margin="0,243,0,0" VerticalAlignment="Top" Height="178" Width="435"/>
+        <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Добавленные элементы:" VerticalAlignment="Top" Margin="0,222,0,0" Width="272"/>
 
     </Grid>
 </Window>
