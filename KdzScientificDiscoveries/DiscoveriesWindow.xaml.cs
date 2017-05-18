@@ -102,5 +102,24 @@ namespace KdzScientificDiscoveries
             dataGrid.ItemsSource = _discoveriesShow;
 
         }
+
+        private void button_Search_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < _discoveriesShow.Count; i++)
+            {
+                if (_discoveriesShow[i].Name == textBoxName.Text)
+
+
+                    (dataGrid.ItemContainerGenerator.ContainerFromIndex(i) as DataGridRow).Background = Brushes.Yellow;
+
+
+
+                else if (string.IsNullOrWhiteSpace(textBoxName.Text))
+                {
+                    MessageBox.Show("Введите название");
+                    return;
+                }
+            }
+        }
     }
 }

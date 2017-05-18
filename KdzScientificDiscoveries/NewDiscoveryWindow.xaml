@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KdzScientificDiscoveries"
         mc:Ignorable="d"
-        Title="Новое открытие" Height="514" Width="454">
+        Title="New Discovery" Height="514" Width="454">
     <Grid Margin="0,0,-8,-4">
         <Grid.RowDefinitions>
             <RowDefinition/>
