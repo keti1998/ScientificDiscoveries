@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace KdzScientificDiscoveries
 {
@@ -25,7 +26,8 @@ namespace KdzScientificDiscoveries
         {
             InitializeComponent();
         }
-        List<Discovery> _discoveriesnew = new List<Discovery>();
+        List<Discovery> _discoveriesnew;
+        List<Discovery> _discoveriesnew1 = new List<Discovery>();
 
 
         int date;
@@ -33,6 +35,19 @@ namespace KdzScientificDiscoveries
 
         private void buttonAdd_Click(object sender, RoutedEventArgs e)
         {
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (FileStream fs = new FileStream("../../discoveries.dat", FileMode.OpenOrCreate))
+            {
+                try
+                {
+                    _discoveriesnew = (List<Discovery>)formatter.Deserialize(fs);
+
+                }
+                catch
+                {
+                    _discoveriesnew = new List<Discovery>();
+                }
+            }
             int.TryParse(textBoxyear.Text, out date);
 
             if (nobelYes.IsChecked == true)
@@ -88,20 +103,20 @@ namespace KdzScientificDiscoveries
             }
             if (nobelNo.IsChecked == false & nobelYes.IsChecked == false)
             {
-                MessageBox.Show("Необходимо выбрать ,получит ли ученый Нобелевскую премию или нет ");
+                MessageBox.Show("Необходимо выбрать ,получил ли ученый Нобелевскую премию или нет ");
                 return;
             }
-            var discovery = new Discovery(textBoxname.Text, textBoxfio.Text, textBoxcountry.Text, textBoxsphere.Text, date, _nobelYes);
-            object[] discoveryarr = new object[6];
+            var discovery = new Discovery(textBoxname.Text, textBoxfio.Text, textBoxsphere.Text, textBoxcountry.Text,  date, _nobelYes);
+           /* object[] discoveryarr = new object[6];
             discoveryarr[0] = textBoxname.Text;
             discoveryarr[1] = textBoxfio.Text;
-            discoveryarr[2] = textBoxcountry.Text;
-            discoveryarr[3] = textBoxsphere.Text;
+            discoveryarr[3] = textBoxcountry.Text;
+            discoveryarr[2] = textBoxsphere.Text;
             discoveryarr[4] = textBoxyear.Text;
             discoveryarr[5] = _nobelYes;
-
+            */
             _discoveriesnew.Add(discovery);
-
+            _discoveriesnew1.Add(discovery);
 
 
             textBoxcountry.Clear();
@@ -112,24 +127,22 @@ namespace KdzScientificDiscoveries
             nobelNo.IsChecked = false;
             nobelYes.IsChecked = false;
 
-            var lines = String.Join(",", discoveryarr);
-            string path = "../../list.txt";
-
-            if (!File.Exists(path))
-            {
-                File.Create(path);
-                TextWriter tw = new StreamWriter(path);
-                tw.Write(_discoveriesnew);
-                tw.Close();
-            }
-            else if (File.Exists(path))
-            {
-                File.AppendAllText(path, lines + Environment.NewLine);
-            }
 
             dataGridnew.ItemsSource = null;
             dataGridnew.Columns.Clear();
-            dataGridnew.ItemsSource = _discoveriesnew;
+            dataGridnew.ItemsSource = _discoveriesnew1;
+
+          
+            using (FileStream fs = new FileStream("../../discoveries.dat", FileMode.Open))
+            {
+                formatter = new BinaryFormatter();
+                formatter.Serialize(fs, _discoveriesnew);
+            }
+            DiscoveriesWindow discover = new DiscoveriesWindow();
+            MessageBox.Show("Открытие добавлено");
+            this.Close();
+            discover.Show();
+          
             
            
         }

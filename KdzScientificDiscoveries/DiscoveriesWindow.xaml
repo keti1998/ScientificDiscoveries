@@ -10,7 +10,6 @@
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="319" Width="678"/>
         <Button x:Name="button_Add" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Margin="152,356,0,0" Height="26" Click="button_Add_Click"/>
         <Button x:Name="button_Delete" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Margin="268,356,0,0" Height="26" Click="button_Delete_Click"/>
-        <Button x:Name="button_Refresh" Content="Обновить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Margin="39,356,0,0" Height="26" Click="button_Refresh_Click"/>
         <Button x:Name="button_Search" Content="Поиск" HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Margin="384,357,0,0" Height="26" Click="button_Search_Click"/>
         <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" Margin="498,356,0,0"/>
 

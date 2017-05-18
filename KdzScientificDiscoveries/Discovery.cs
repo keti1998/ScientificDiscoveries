@@ -59,7 +59,7 @@ namespace KdzScientificDiscoveries
         }
 
 
-        public Discovery(string name,string scientist, string country, string sphere,  int date, string nobelPrize)
+        public Discovery(string name,string scientist, string sphere, string country,  int date, string nobelPrize)
         {
             _name = name;
             _scientist = scientist;

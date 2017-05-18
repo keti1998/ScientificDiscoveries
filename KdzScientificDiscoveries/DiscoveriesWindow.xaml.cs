@@ -21,36 +21,28 @@ namespace KdzScientificDiscoveries
     /// </summary>
     public partial class DiscoveriesWindow : Window
     {
-        List<Discovery> _discoveriesShow = new List<Discovery>();
+        List<Discovery> _discoveriesShow;
         public DiscoveriesWindow()
         {
             InitializeComponent();
-            _discoveriesShow.Clear();
-            string[] line = File.ReadAllLines("../../list.txt", Encoding.GetEncoding(1251));
-            for (int i = 0; i < line.Length; i++)
-            {
-                string[] items = line[i].Split(',');
-                Discovery example = new Discovery(items[0], items[1], items[2], items[3], int.Parse(items[4]), items[5]);
-                _discoveriesShow.Add(example);
-            }
-            dataGrid.ItemsSource = _discoveriesShow;
-
+            LoadData();
+           
         }
 
         private void button_Add_Click(object sender, RoutedEventArgs e)
         {
             NewDiscoveryWindow newD = new NewDiscoveryWindow();
             newD.Show();
-            
-            
-            
+            this.Close();
+            LoadData();
+
+
+
         }
 
-       
+
         private void button_Delete_Click(object sender, RoutedEventArgs e)
         {
-           
-
             var selindex = dataGrid.SelectedIndex + 1;
             if (selindex == 0)
 
@@ -69,39 +61,17 @@ namespace KdzScientificDiscoveries
                     dataGrid.ItemsSource = null;
                     dataGrid.Columns.Clear();
                     dataGrid.ItemsSource = _discoveriesShow;
+                    SaveData();
 
-                    string[] lines = File.ReadAllLines("../../list.txt", Encoding.GetEncoding(1251));
-                    StreamWriter sw = new StreamWriter("../../list.txt", false, Encoding.UTF8);
 
-                    for (int i = 0; i < lines.Length; i++)
-                    {
-                        if (i != selindex - 1)
-                        {
-                            sw.WriteLine(lines[i]);
-                        }
-                    }
-                    sw.Close();
+                    
                 }
 
 
             }
         }
 
-        private void button_Refresh_Click(object sender, RoutedEventArgs e)
-        {
-            dataGrid.ItemsSource = null;
-            dataGrid.Columns.Clear();
-            _discoveriesShow.Clear();
-            string[] line = File.ReadAllLines("../../list.txt", Encoding.GetEncoding(1251));
-            for (int i = 0; i < line.Length; i++)
-            {
-                string[] items = line[i].Split(',');
-                Discovery example = new Discovery(items[0], items[1], items[2], items[3], int.Parse(items[4]), items[5]);
-                _discoveriesShow.Add(example);
-            }
-            dataGrid.ItemsSource = _discoveriesShow;
-
-        }
+      
 
         private void button_Search_Click(object sender, RoutedEventArgs e)
         {
@@ -119,6 +89,41 @@ namespace KdzScientificDiscoveries
                     MessageBox.Show("Введите название");
                     return;
                 }
+            }
+        }
+        //  metodi
+        private void LoadData()
+        {
+            try
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                using (FileStream fs = new FileStream("../../discoveries.dat", FileMode.OpenOrCreate))
+                {
+                    try
+                    {
+                        _discoveriesShow = (List<Discovery>)formatter.Deserialize(fs);
+
+                    }
+                    catch
+                    {
+                        _discoveriesShow = new List<Discovery>();
+                    }
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка чтения из файла");
+            }
+            dataGrid.ItemsSource = _discoveriesShow;
+        }
+
+        private void SaveData()
+        {
+            using (FileStream filest = new FileStream("../../discoveries.dat", FileMode.Open))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(filest, _discoveriesShow);
             }
         }
     }
