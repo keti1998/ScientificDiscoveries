@@ -70,7 +70,7 @@ namespace KdzScientificDiscoveries
 
             if (string.IsNullOrWhiteSpace(textBoxfio.Text))
             {
-                MessageBox.Show("Необходимо ввести ФИО ученого ");
+                MessageBox.Show("Необходимо ввести ФИО учёного ");
                 textBoxfio.Focus();
                 return;
             }
@@ -103,7 +103,7 @@ namespace KdzScientificDiscoveries
             }
             if (nobelNo.IsChecked == false & nobelYes.IsChecked == false)
             {
-                MessageBox.Show("Необходимо выбрать ,получил ли ученый Нобелевскую премию или нет ");
+                MessageBox.Show("Необходимо выбрать, получил ли ученый Нобелевскую премию или нет ");
                 return;
             }
             var discovery = new Discovery(textBoxname.Text, textBoxfio.Text, textBoxsphere.Text, textBoxcountry.Text,  date, _nobelYes);
@@ -142,8 +142,8 @@ namespace KdzScientificDiscoveries
             MessageBox.Show("Открытие добавлено");
             this.Close();
             discover.Show();
-          
-            
+
+            Logger.Log("Добавлено новое открытие");
            
         }
 
@@ -152,7 +152,38 @@ namespace KdzScientificDiscoveries
         private void textBoxyear_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (!char.IsDigit(e.Text, e.Text.Length - 1))
+            {
                 e.Handled = true;
+                MessageBox.Show("Некорректный ввод данных. Введите год в численном выражении", "Предупреждение");
+            }
+        }
+
+        private void textBoxcountry_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!char.IsLetter(e.Text, e.Text.Length - 1))
+            {
+                e.Handled = true;
+                MessageBox.Show("Некорректный ввод данных. Введите страну открытия", "Предупреждение");
+            }
+        }
+
+        private void textBoxsphere_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!char.IsLetter(e.Text, e.Text.Length - 1))
+            {
+                e.Handled = true;
+                MessageBox.Show("Некорректный ввод данных. Введите сферу открытия", "Предупреждение");
+
+            }
+        }
+
+        private void textBoxfio_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!char.IsLetter(e.Text, e.Text.Length - 1))
+            {
+                e.Handled = true;
+                MessageBox.Show("Некорректный ввод данных. Введите ФИО учёного", "Предупреждение");
+            }
         }
     }
 }

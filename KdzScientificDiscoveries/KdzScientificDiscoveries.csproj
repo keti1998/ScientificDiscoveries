@@ -71,6 +71,7 @@
       <DependentUpon>DiscoveriesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Discovery.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="NewDiscoveryWindow.xaml.cs">
       <DependentUpon>NewDiscoveryWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

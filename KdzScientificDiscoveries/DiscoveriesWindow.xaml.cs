@@ -16,15 +16,19 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace KdzScientificDiscoveries
 {
+    
     /// <summary>
     /// Логика взаимодействия для DiscoveriesWindow.xaml
     /// </summary>
     public partial class DiscoveriesWindow : Window
     {
         List<Discovery> _discoveriesShow;
+        
         public DiscoveriesWindow()
         {
+
             InitializeComponent();
+           
             LoadData();
            
         }
@@ -35,7 +39,7 @@ namespace KdzScientificDiscoveries
             newD.Show();
             this.Close();
             LoadData();
-
+            Logger.Log("Совершён переход в новое окно для добавления нового открытия");
 
 
         }
@@ -47,28 +51,33 @@ namespace KdzScientificDiscoveries
             if (selindex == 0)
 
             {
-                MessageBox.Show("Вы ничего не выбрали");
+                MessageBox.Show("Вы ничего не выбрали", "Удаление элемента");
             }
             else
             {
                 MessageBoxResult result;
-                result = MessageBox.Show("Вы точно хотите безвозвратно удалить " + _discoveriesShow[selindex - 1].Name + "?", "Удаление элемента", MessageBoxButton.OKCancel);
+                result = MessageBox.Show("Вы точно хотите безвозвратно удалить, выбранный вами, объект", "Удаление элемента", MessageBoxButton.OKCancel);
 
                 if (result == MessageBoxResult.OK)
                 {
-                    _discoveriesShow.RemoveAt(selindex - 1);
-
+                   // _discoveriesShow.RemoveAt(selindex - 1);
+                    foreach (var row in dataGrid.SelectedItems)
+                    {
+                        Discovery flat = row as Discovery;
+                        _discoveriesShow.Remove(flat);
+                    }
                     dataGrid.ItemsSource = null;
                     dataGrid.Columns.Clear();
                     dataGrid.ItemsSource = _discoveriesShow;
                     SaveData();
+                    Logger.Log("Удалён, выбранный пользователем, объект");
 
 
-                    
                 }
 
 
             }
+
         }
 
       
@@ -79,10 +88,12 @@ namespace KdzScientificDiscoveries
             {
                 if (_discoveriesShow[i].Name == textBoxName.Text)
 
+                {
+                    MessageBox.Show("Название открытия: " + _discoveriesShow[i].Name + "\nФИО учёного: " + _discoveriesShow[i].Scientist + "\nСфера открытия: " + _discoveriesShow[i].Sphere + "\nСтрана открытия: " + _discoveriesShow[i].Country + "\nГод открытия: " + _discoveriesShow[i].Date + "\nНаличие Нобелевской премии: " + _discoveriesShow[i].NobelPrize, "Информация об открытии");
+                    // (dataGrid.ItemContainerGenerator.ContainerFromIndex(i) as DataGridRow).Background = Brushes.Yellow;
+                    Logger.Log("Выполнен поиск");
 
-                    (dataGrid.ItemContainerGenerator.ContainerFromIndex(i) as DataGridRow).Background = Brushes.Yellow;
-
-
+                }
 
                 else if (string.IsNullOrWhiteSpace(textBoxName.Text))
                 {
@@ -90,6 +101,7 @@ namespace KdzScientificDiscoveries
                     return;
                 }
             }
+            textBoxName.Clear();
         }
         //  metodi
         private void LoadData()
@@ -126,5 +138,24 @@ namespace KdzScientificDiscoveries
                 formatter.Serialize(filest, _discoveriesShow);
             }
         }
+
+        private void button_SaveChanges_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result;
+            result = MessageBox.Show("Вы точно хотите сохранить изменения ?", "Сохранение изменений", MessageBoxButton.OKCancel);
+
+            if (result == MessageBoxResult.OK)
+            {
+                SaveData();
+                Logger.Log("Сохранены изменения сделанные пользователем");
+            }
+            else
+            {
+                LoadData();
+            }
+            
+            
+        }
+            
     }
 }

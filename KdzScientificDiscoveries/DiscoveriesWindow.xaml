@@ -1,17 +1,22 @@
-﻿<Window x:Class="KdzScientificDiscoveries.DiscoveriesWindow"
+﻿
+    <Window x:Class="KdzScientificDiscoveries.DiscoveriesWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KdzScientificDiscoveries"
         mc:Ignorable="d"
-        Title="DiscoveriesWindow" Height="423.665" Width="719.576">
+        Title="DiscoveriesWindow" Height="505.665" Width="723.576" ResizeMode="NoResize" >
+
     <Grid>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="319" Width="678"/>
-        <Button x:Name="button_Add" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Margin="152,356,0,0" Height="26" Click="button_Add_Click"/>
-        <Button x:Name="button_Delete" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Margin="268,356,0,0" Height="26" Click="button_Delete_Click"/>
-        <Button x:Name="button_Search" Content="Поиск" HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Margin="384,357,0,0" Height="26" Click="button_Search_Click"/>
-        <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" Margin="498,356,0,0"/>
+        
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="319" Width="691"/>
+        <Button x:Name="button_Add" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="24,346,0,0" Height="36" Click="button_Add_Click"/>
+        <Button x:Name="button_Delete" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="134" Margin="289,346,0,0" Height="36" Click="button_Delete_Click"/>
+        <Button x:Name="button_Search" Content="Поиск" HorizontalAlignment="Left" VerticalAlignment="Top" Width="144" Margin="547,412,0,0" Height="26" Click="button_Search_Click"/>
+        <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="438" Margin="24,412,0,0"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Введите название открытия для поиска:" VerticalAlignment="Top" Margin="24,396,0,0" Width="230"/>
+        <Button x:Name="button_SaveChanges" Content="Сохранить изменения" HorizontalAlignment="Left" VerticalAlignment="Top" Width="144" Margin="547,346,0,0" Height="36" Click="button_SaveChanges_Click"/>
 
     </Grid>
 </Window>
