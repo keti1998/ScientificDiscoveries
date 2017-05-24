@@ -1,0 +1,22 @@
+﻿<Page x:Class="KdzScientificDiscoveries.DiscoveriesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:KdzScientificDiscoveries"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="750"
+      Title="DiscoveriesPage">
+
+    <Grid Margin="0,0,-412,-164">
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="322" Width="727"/>
+        <Button x:Name="button_Add" ToolTip =" При нажатии дается возможность добавления данных о новом открытии" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="24,346,0,0" Height="36" Click="button_Add_Click" MouseEnter="button_Add_MouseEnter" MouseLeave="button_Add_MouseLeave"/>
+        <Button x:Name="button_Delete" ToolTip =" При нажатии удаляется из списка выбранное открытие" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="134" Margin="301,346,0,0" Height="36" Click="button_Delete_Click" MouseEnter="button_Delete_MouseEnter" MouseLeave="button_Delete_MouseLeave"/>
+        <Button x:Name="button_Search" ToolTip ="При нажатии производится поиск по открытиям " Content="Поиск" HorizontalAlignment="Left" VerticalAlignment="Top" Width="144" Margin="574,412,0,0" Height="26" Click="button_Search_Click" MouseEnter="button_Search_MouseEnter" MouseLeave="button_Search_MouseLeave"/>
+        <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="438" Margin="24,412,0,0"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Введите название открытия для поиска:" VerticalAlignment="Top" Margin="24,396,0,0" Width="230"/>
+        <Button x:Name="button_SaveChanges" Content="Сохранить изменения" HorizontalAlignment="Left" VerticalAlignment="Top" Width="144" Margin="574,346,0,0" Height="36" Click="button_SaveChanges_Click" ToolTip="При нажатии изменятся данные, измененные в таблице" MouseEnter="button_SaveChanges_MouseEnter" MouseLeave="button_SaveChanges_MouseLeave"/>
+        <Button x:Name="button_Back" Content="Выход" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="24,459,0,0" Height="30" ToolTip="При нажатии совершится выход из учётной записи" MouseEnter="button_Back_MouseEnter" MouseLeave="button_Back_MouseLeave" Click="button_Back_Click" />
+
+    </Grid>
+</Page>

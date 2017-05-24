@@ -69,6 +69,8 @@ namespace KdzScientificDiscoveries
             _NobelPrize = nobelPrize;
         }
 
+      //  public Discovery() { }
+
 
     }
 }

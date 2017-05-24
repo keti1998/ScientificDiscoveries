@@ -1,0 +1,37 @@
+﻿<Page x:Class="KdzScientificDiscoveries.NewDiscoveryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:KdzScientificDiscoveries"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="730"
+      Title="NewDiscoveryPage">
+
+    <Grid
+        Margin="0,0,-8,-4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="125*"/>
+            <RowDefinition Height="27*"/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="name" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Название открытия:" VerticalAlignment="Top" Margin="0,22,0,0" Height="23" Width="133"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="ФИО ученого :" VerticalAlignment="Top" Margin="0,50,0,0" Height="16" Width="100"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Страна, в которой было сделано открытие:" VerticalAlignment="Top" Margin="0,80,0,0" Height="16" Width="272"/>
+        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Сфера открытия:" VerticalAlignment="Top" Margin="0,109,0,0" Height="16" Width="115"/>
+        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Год:" VerticalAlignment="Top" Margin="0,139,0,0" Height="16" Width="22"/>
+        <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Наличие Нобелевской премии:" VerticalAlignment="Top" Margin="0,168,0,0" Height="16" Width="173"/>
+        <TextBox x:Name="textBoxname" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="544" Margin="159,21,0,0" KeyDown="textBoxname_KeyDown" />
+        <TextBox x:Name="textBoxfio" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="544" Margin="159,50,0,0" PreviewTextInput="textBoxfio_PreviewTextInput" />
+        <TextBox x:Name="textBoxcountry" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="390" Margin="313,80,0,0" PreviewTextInput="textBoxcountry_PreviewTextInput" />
+        <TextBox x:Name="textBoxsphere" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="544" Margin="159,110,0,0" PreviewTextInput="textBoxsphere_PreviewTextInput" />
+        <TextBox x:Name="textBoxyear" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="75,137,0,0" PreviewTextInput="textBoxyear_PreviewTextInput"/>
+        <Button x:Name="buttonAdd" IsDefault="True" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="151" Margin="552,152,0,0" Height="32" Click="buttonAdd_Click" ToolTip="При нажатии добавится информация о новом открытии" MouseLeave="buttonAdd_MouseLeave" MouseEnter="buttonAdd_MouseEnter"/>
+        <RadioButton x:Name="nobelYes" Content="Да" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,169,0,0"/>
+        <RadioButton x:Name="nobelNo" Content="Нет" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="257,169,0,0"/>
+        <DataGrid x:Name="dataGridnew" HorizontalAlignment="Left" Margin="0,243,0,0" VerticalAlignment="Top" Height="171" Width="728"/>
+        <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Добавленные элементы:" VerticalAlignment="Top" Margin="0,222,0,0" Width="272"/>
+        <Button x:Name="buttonBack" Content="Вернуться назад" ToolTip="При нажатии вы вернетесь на страницу со списком открытий" HorizontalAlignment="Left" VerticalAlignment="Top" Width="163" Margin="10,37,0,0" Grid.Row="1" Height="34" Click="buttonBack_Click" MouseEnter="buttonBack_MouseEnter" MouseLeave="buttonBack_MouseLeave"/>
+    
+    </Grid>
+</Page>
