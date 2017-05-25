@@ -33,10 +33,8 @@ namespace KdzScientificDiscoveries
 
         int date;
         string _nobelYes;
-        private void textBoxname_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-
-        }
+        int chislo;
+       
 
 
         private void buttonAdd_Click(object sender, RoutedEventArgs e)
@@ -83,7 +81,7 @@ namespace KdzScientificDiscoveries
                 }
             }
 
-
+            //proverka
                     if (string.IsNullOrWhiteSpace(textBoxfio.Text))
             {
                 MessageBox.Show("Необходимо ввести ФИО учёного ", "Предупреждение");
@@ -117,7 +115,32 @@ namespace KdzScientificDiscoveries
                 textBoxyear.Focus();
                 return;
             }
-            if (Convert.ToInt32(textBoxyear.Text) < 0 || Convert.ToInt32(textBoxyear.Text) > 2017)
+            if (!int.TryParse(textBoxyear.Text, out chislo))
+            {
+                MessageBox.Show("Некорректный ввод данных. Введите год в численном выражении", "Предупреждение");
+                textBoxyear.Focus();
+                return;
+            }
+            if (int.TryParse(textBoxfio.Text, out chislo))
+            {
+                MessageBox.Show("Некорректный ввод данных.Введите ФИО учёного ", "Предупреждение");
+                textBoxfio.Focus();
+                return;
+            }
+            if (int.TryParse(textBoxcountry.Text, out chislo))
+            {
+                MessageBox.Show("Некорректный ввод данных.Введите страну открытия ", "Предупреждение");
+                textBoxcountry.Focus();
+                return;
+            }
+            if (int.TryParse(textBoxsphere.Text, out chislo))
+            {
+                MessageBox.Show("Некорректный ввод данных.Введите сферу открытия ", "Предупреждение");
+                textBoxsphere.Focus();
+                return;
+            }
+          
+            if (Convert.ToInt32(textBoxyear.Text) < 1 || Convert.ToInt32(textBoxyear.Text) > 2017)
             {
                 MessageBox.Show("Введите корректный год", "Предупреждение");
                 return;
@@ -127,6 +150,7 @@ namespace KdzScientificDiscoveries
                 MessageBox.Show("Необходимо выбрать, получил ли ученый Нобелевскую премию или нет", "Предупреждение");
                 return;
             }
+            //
             var discovery = new Discovery(textBoxname.Text, textBoxfio.Text, textBoxsphere.Text, textBoxcountry.Text, date, _nobelYes);
            
             
@@ -155,11 +179,9 @@ namespace KdzScientificDiscoveries
             }
             ;
             MessageBox.Show("Информация об открытии успешно добавлена");
-
-            DiscoveriesPage disc = new DiscoveriesPage();
-            NavigationService.Navigate(disc);
-
+            
             Logger.Log("Добавлено новое открытие.");
+         
         }
         private void textBoxfio_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -200,13 +222,14 @@ namespace KdzScientificDiscoveries
 
         private void buttonBack_Click(object sender, RoutedEventArgs e)
         { MessageBoxResult result;
-            result = MessageBox.Show("Вы хотите вернуться к списку, не добавив открытия? ", "Возвращение к исходной странице", MessageBoxButton.OKCancel);
+            result = MessageBox.Show("Вы хотите вернуться к списку открытий? ", "Возвращение к исходной странице", MessageBoxButton.OKCancel);
 
             if (result == MessageBoxResult.OK)
             {
 
-                NavigationService.GoBack();
-                Logger.Log("Пользователь вернулся на исходную страницу.");
+                DiscoveriesPage disc = new DiscoveriesPage();
+                NavigationService.Navigate(disc);
+                Logger.Log("Пользователь вернулся на страницу со списком открытий.");
                 return;
             }
             else

@@ -12,11 +12,12 @@
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="347,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" KeyDown="textBox_KeyDown"/>
         <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="347,193,0,0" VerticalAlignment="Top" Width="180" Height="23" KeyDown="passwordBox_KeyDown"/>
         <PasswordBox x:Name="passwordBox1" HorizontalAlignment="Left" Margin="347,238,0,0" VerticalAlignment="Top" Width="180" Height="22"/>
-        <Button x:Name="button" IsDefault="True" Content="Зарегистрироваться" ToolTip="При нажатии на эту кнопку совершится регистрация нового пользователя" HorizontalAlignment="Left" Margin="249,319,0,0" VerticalAlignment="Top" Width="165" Click="button_Click" Height="39" MouseEnter="button_MouseEnter" MouseLeave="button_MouseLeave"/>
+        <Button x:Name="button" IsDefault="True" Content="Зарегистрироваться" ToolTip="При нажатии на эту кнопку совершится регистрация нового пользователя" HorizontalAlignment="Left" Margin="249,319,0,0" VerticalAlignment="Top" Width="165" Click="button_Click" Height="39" MouseEnter="button_MouseEnter" Background="#FF3F4FB2" MouseLeave="button_MouseLeave"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Введите логин:" VerticalAlignment="Top" Margin="179,159,0,0" Width="120"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Введите пароль:" VerticalAlignment="Top" Margin="179,200,0,0"/>
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Повторите пароль:" VerticalAlignment="Top" Margin="179,238,0,0"/>
         <Image x:Name="image" Source="/Images/lurie_scientific.png"  HorizontalAlignment="Left" Height="118" VerticalAlignment="Top" Width="720" Margin="10,0,0,0"/>
         <Label x:Name="label" Content="Регистрация" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="347,100,0,0" Height="30" Width="180" FontSize="18" FontFamily="Arial"/>
+        <Button x:Name="buttonBack" Background="#FF8864A6" Content="Вернуться назад" ToolTip="При нажатии вы вернетесь на страницу авторизации" HorizontalAlignment="Left" VerticalAlignment="Top" Width="163" Margin="10,445,0,0" Height="34" Click="buttonBack_Click" MouseEnter="buttonBack_MouseEnter" MouseLeave="buttonBack_MouseLeave"/>
     </Grid>
 </Page>

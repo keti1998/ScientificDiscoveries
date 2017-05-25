@@ -6,8 +6,10 @@
         xmlns:local="clr-namespace:KdzScientificDiscoveries"
         mc:Ignorable="d"
         Title="MainWindow" Height="550" Width="750">
-    
+
+
     <Grid>
+        
         <Frame Name="frameMain" NavigationUIVisibility="Hidden">
         </Frame>
 

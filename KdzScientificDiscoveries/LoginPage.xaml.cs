@@ -35,46 +35,48 @@ namespace KdzScientificDiscoveries
         
         private void button_signIn_Click(object sender, RoutedEventArgs e)
         {
-            Person p = new Person("1","00");
-            _person.Add(p);
+
+            
             LoadPersonData();
             List<Person> person = new List<Person>();
+            if (textBoxLogin.Text == "")
+
+            {
+                MessageBox.Show("Введите логин");
+                return;
+            }
+
+
+            if (passwordBox.Password.ToString() == "")
+            {
+                MessageBox.Show("Введите пароль");
+                return;
+            }
             for (int i = 0; i < _person.Count; i++)
             {
                 if (textBoxLogin.Text == _person[i].Login && passwordBox.Password.ToString() == _person[i].Password)
-                { DiscoveriesPage disc = new DiscoveriesPage();
-            NavigationService.Navigate(disc);
-                    person.Add(_person[i]);
-                    Logger.Log("Совершена авторизация зарегистрированного пользователя.");
-                    break;
-
-
-                }
-                else
                 {
-                    if (textBoxLogin.Text == "")
+                    DiscoveriesPage disc = new DiscoveriesPage();
+                    NavigationService.Navigate(disc);
+                    person.Add(_person[i]);
+                    Logger.Log("Совершена авторизация зарегистрированного пользователя, осуществлен переход на страницу со списком открытий.");
+                    textBoxLogin.Clear();
+                    break;
+                    
 
-                    {
-                        MessageBox.Show("Введите логин");
-                        return;
-                    }
-                    else
-                    {
-                        if (passwordBox.Password.ToString() == "")
-                        {
-                            MessageBox.Show("Введите пароль");
-                            return;
-                        }
 
-                    }
                 }
-                
             }
+                
+
             if (person.Count == 0)
             {
                 MessageBox.Show("Неверный логин или пароль");
+              
             }
-            textBoxLogin.Clear();
+            
+            passwordBox.Clear();
+          
         }
 
         private void LoadPersonData()
@@ -126,6 +128,7 @@ namespace KdzScientificDiscoveries
 
         private void button_signUp_Click(object sender, RoutedEventArgs e)
         {
+            textBoxLogin.Clear();
             NavigationService.Navigate(Pages.SignUp);
             Logger.Log("Совершен переход на страницу регистрации.");
         }

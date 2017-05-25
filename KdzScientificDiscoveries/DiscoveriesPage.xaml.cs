@@ -48,7 +48,7 @@ namespace KdzScientificDiscoveries
             if (result == MessageBoxResult.OK)
             {
                 SaveData();
-                Logger.Log("Сохранены изменения сделанные пользователем");
+                Logger.Log("Сохранены отредактированные пользователем данные.");
             }
             else
             {
@@ -83,7 +83,7 @@ namespace KdzScientificDiscoveries
                     dataGrid.Columns.Clear();
                     dataGrid.ItemsSource = _discoveriesShow;
                     SaveData();
-                    Logger.Log("Удалён, выбранный пользователем, объект");
+                    Logger.Log("Удалён, выбранный пользователем, объект.");
 
 
                 }
@@ -94,6 +94,7 @@ namespace KdzScientificDiscoveries
 
         private void button_Search_Click(object sender, RoutedEventArgs e)
         {
+           
             LoadData();
 
             List<Discovery> listsearch = new List<Discovery>();
@@ -208,12 +209,14 @@ namespace KdzScientificDiscoveries
 
         private void button_Search_MouseEnter(object sender, MouseEventArgs e)
         {
+            
             button_Search.FontWeight = FontWeights.Bold;
             button_Search.FontSize = 16;
         }
 
         private void button_Search_MouseLeave(object sender, MouseEventArgs e)
         {
+           
             button_Search.FontWeight = FontWeights.Normal;
             button_Search.FontSize = 12;
         }
