@@ -74,6 +74,7 @@ namespace KdzScientificDiscoveries
                     formatter.Serialize(fs, _person);
                 }
                 NavigationService.Navigate(Pages.LoginPage);
+                textBox.Clear();
                 MessageBox.Show("Регистрация прошла успешно");
                 Logger.Log("Зарегистрирован новый пользователь.");
             }
@@ -113,8 +114,11 @@ namespace KdzScientificDiscoveries
                             passwordBox.Focus();
                         }));
             }
+            if (e.Key.Equals(Key.Space))
+            {
+                e.Handled = true;
+            }
         }
-
         private void passwordBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key.Equals(Key.Tab))
@@ -174,5 +178,7 @@ namespace KdzScientificDiscoveries
             buttonBack.FontWeight = FontWeights.Normal;
             buttonBack.FontSize = 12;
         }
+
+       
     }
 }

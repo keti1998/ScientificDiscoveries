@@ -11,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -28,7 +29,27 @@ namespace KdzScientificDiscoveries
         {
             InitializeComponent();
             LoadData();
+            DoubleAnimation buttonAnimation = new DoubleAnimation();
+            buttonAnimation.From = button_Add.ActualWidth;
+            buttonAnimation.To = 150;
+            buttonAnimation.Duration = TimeSpan.FromSeconds(3);
+            button_Add.BeginAnimation(Button.WidthProperty, buttonAnimation);
 
+            buttonAnimation.From = button_Delete.ActualWidth;
+           
+            button_Delete.BeginAnimation(Button.WidthProperty, buttonAnimation);
+
+            buttonAnimation.From = button_SaveChanges.ActualWidth;
+         
+            button_SaveChanges.BeginAnimation(Button.WidthProperty, buttonAnimation);
+
+            buttonAnimation.From = button_Back.ActualWidth;
+           
+            button_Back.BeginAnimation(Button.WidthProperty, buttonAnimation);
+
+            buttonAnimation.From = button_Search.ActualWidth;
+         
+            button_Search.BeginAnimation(Button.WidthProperty, buttonAnimation);
         }
 
         private void button_Add_Click(object sender, RoutedEventArgs e)
@@ -58,7 +79,7 @@ namespace KdzScientificDiscoveries
                 }
                 if (int.TryParse(_discoveriesShow[i].Country, out chislo))
                 {
-                    MessageBox.Show("Некорректный ввод данных страны открытия. Изменения сохранены не будут", "Предупреждение");
+                    MessageBox.Show("Некорректный ввод данных страны открытия.Изменения сохранены не будут", "Предупреждение");
                     LoadData();
                     return;
                 }

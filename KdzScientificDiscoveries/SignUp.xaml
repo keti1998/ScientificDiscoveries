@@ -9,7 +9,7 @@
       Title="SignUp">
 
     <Grid>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="347,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" KeyDown="textBox_KeyDown"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="347,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" KeyDown="textBox_KeyDown" />
         <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="347,193,0,0" VerticalAlignment="Top" Width="180" Height="23" KeyDown="passwordBox_KeyDown"/>
         <PasswordBox x:Name="passwordBox1" HorizontalAlignment="Left" Margin="347,238,0,0" VerticalAlignment="Top" Width="180" Height="22"/>
         <Button x:Name="button" IsDefault="True" Content="Зарегистрироваться" ToolTip="При нажатии на эту кнопку совершится регистрация нового пользователя" HorizontalAlignment="Left" Margin="249,319,0,0" VerticalAlignment="Top" Width="165" Click="button_Click" Height="39" MouseEnter="button_MouseEnter" Background="#FF3F4FB2" MouseLeave="button_MouseLeave"/>
