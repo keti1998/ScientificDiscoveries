@@ -38,10 +38,34 @@ namespace KdzScientificDiscoveries
             Logger.Log("Совершён переход в новое окно для добавления нового открытия.");
         }
 
-
+        int chislo;
 
         private void button_SaveChanges_Click(object sender, RoutedEventArgs e)
         {
+            for (int i = 0; i < _discoveriesShow.Count; i++)
+            {
+                if (int.TryParse(_discoveriesShow[i].Scientist, out chislo))
+                {
+                    MessageBox.Show("Некорректный ввод данных ФИО. Изменения сохранены не будут ", "Предупреждение");
+                    LoadData();
+                    return;
+                }
+                if (int.TryParse(_discoveriesShow[i].Sphere, out chislo))
+                {
+                    MessageBox.Show("Некорректный ввод данных сферы открытия. Изменения сохранены не будут", "Предупреждение");
+                    LoadData();
+                    return;
+                }
+                if (int.TryParse(_discoveriesShow[i].Country, out chislo))
+                {
+                    MessageBox.Show("Некорректный ввод данных страны открытия. Изменения сохранены не будут", "Предупреждение");
+                    LoadData();
+                    return;
+                }
+               
+                
+
+            }
             MessageBoxResult result;
             result = MessageBox.Show("Вы точно хотите сохранить изменения ?", "Сохранение изменений", MessageBoxButton.OKCancel);
 

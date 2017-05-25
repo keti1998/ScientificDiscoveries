@@ -74,6 +74,7 @@ namespace KdzScientificDiscoveries
                     formatter.Serialize(fs, _person);
                 }
                 NavigationService.Navigate(Pages.LoginPage);
+                MessageBox.Show("Регистрация прошла успешно");
                 Logger.Log("Зарегистрирован новый пользователь.");
             }
             else
